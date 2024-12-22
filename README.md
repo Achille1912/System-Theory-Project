@@ -15,14 +15,14 @@ This repository contains the implementation of a project for the **System Theory
 
 ## Project Description
 
-The aim of the project is to design a control system for a mobile robot. The robot is tasked with moving from an initial state $$\mathbf{x} = [0, 0, 0]^T$$ to a desired state defined as:
-$$
+The aim of the project is to design a control system for a mobile robot. The robot is tasked with moving from an initial state $\mathbf{x} = [0, 0, 0]^T$ to a desired state defined as:
+```math
 \begin{dcases}
 x_d = 10 \\
 y_d = 2 \\
 \theta_d = \text{atan2}(y_d - y, x_d - x)
 \end{dcases}
-$$
+```
 The project involves:
 - Designing an **Extended Kalman Filter (EKF)** for state observation.
 - Implementing a **Model Predictive Controller (MPC)** to achieve the desired behavior.
@@ -38,30 +38,30 @@ The robot's structure and model variables are illustrated in the following diagr
 
 ### Equations
 1. **Point to Control**:
-    $$
+    ```math
     \begin{dcases}
     x = x' + \delta \cos(\theta) \\
     y = y' + \delta \sin(\theta)
     \end{dcases}
-    $$
+    ```
 
 2. **Dynamics**:
-    $$
+    ```math
     \begin{dcases}
     \dot{x} = v \cos(\theta) - \delta \omega \sin(\theta) \\
     \dot{y} = v \sin(\theta) + \delta \omega \cos(\theta) \\
     \dot{\theta} = \omega
     \end{dcases}
-    $$
+    ```
 
 3. **Measured Output**:
-    $$
+    ```math
     \begin{dcases}
     x_m = x' - \alpha \cos(\theta) \\
     y_m = y' + \alpha \sin(\theta) \\
     \theta_m = \theta
     \end{dcases}
-    $$
+    ```
 
 ---
 
@@ -107,12 +107,12 @@ Three types of predictive control were implemented:
 1. **LQR**
 2. **Unconstrained**
 3. **Constrained**, with the following constraints:
-    $$
+    ```math
     \begin{dcases}
     |v| < 0.5 \, \text{m/s} \\
     |\omega| < 0.3 \, \text{rad/s}
     \end{dcases}
-    $$
+    ```
 
 ### Implementation
 The control law was implemented as follows:
